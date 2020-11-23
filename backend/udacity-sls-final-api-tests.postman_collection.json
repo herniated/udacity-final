@@ -1,0 +1,1090 @@
+{
+	"info": {
+		"_postman_id": "e656b963-fea8-4cd8-8597-42a5944c4ec5",
+		"name": "udacity-sls-final-api-tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Leagues - No Items",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "867151ff-067e-4f6e-9737-6cb29da093a9",
+						"exec": [
+							"pm.test(\"Response is 200 and no items\", function(){",
+							"   pm.expect(pm.response.code).to.be.equal(200) ",
+							"   pm.expect(pm.response.json()).to.be.an('object');",
+							"   pm.expect(pm.response.json()).to.have.a.property(\"items\");",
+							"   pm.expect(pm.response.json().items).to.be.empty;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/leagues",
+					"protocol": "https",
+					"host": [
+						"{{apiId}}",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"leagues"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create League - invalid property",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1b289919-7e7c-48a7-b0b3-cb276980357e",
+						"exec": [
+							"pm.test(\"Response is 400\", function(){",
+							"   pm.expect(pm.response.code).to.be.equal(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"wrong\": \"League Name\"\n}"
+				},
+				"url": {
+					"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/leagues",
+					"protocol": "https",
+					"host": [
+						"{{apiId}}",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"leagues"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create League - empty name property",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "07c2d735-b106-474d-ad20-1a47ae1c0234",
+						"exec": [
+							"pm.test(\"Response is 400\", function(){",
+							"   pm.expect(pm.response.code).to.be.equal(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"\"\n}"
+				},
+				"url": {
+					"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/leagues",
+					"protocol": "https",
+					"host": [
+						"{{apiId}}",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"leagues"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create League - Correct",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1b8f68b5-b1e4-42fe-aec7-a97ece7d8703",
+						"exec": [
+							"pm.test(\"Response is 201\", function(){",
+							"   pm.expect(pm.response.code).to.be.equal(201) ",
+							"   pm.expect(pm.response.json()).to.be.an('object');",
+							"   pm.expect(pm.response.json()).to.have.a.property(\"item\");",
+							"   pm.expect(pm.response.json().item).to.have.a.property(\"leagueId\");",
+							"   pm.collectionVariables.set(\"leagueId\", pm.response.json().item.leagueId);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"League Name\"\n}"
+				},
+				"url": {
+					"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/leagues",
+					"protocol": "https",
+					"host": [
+						"{{apiId}}",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"leagues"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Leagues - 1 Item",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f1ef5f80-3fe0-4364-bbce-71116d35b582",
+						"exec": [
+							"pm.test(\"Response is 200 and no items\", function(){",
+							"   pm.expect(pm.response.code).to.be.equal(200) ",
+							"   pm.expect(pm.response.json()).to.be.an('object');",
+							"   pm.expect(pm.response.json()).to.have.a.property(\"items\");",
+							"   pm.expect(pm.response.json().items).to.have.lengthOf(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/leagues",
+					"protocol": "https",
+					"host": [
+						"{{apiId}}",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"leagues"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get League",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cb0ba42e-b546-4a53-b7af-cfb9bf8efee1",
+						"exec": [
+							"pm.test(\"Response is 200\", function(){",
+							"   pm.expect(pm.response.code).to.be.equal(200) ",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{authToken}}"
+					}
+				],
+				"url": {
+					"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/leagues/:leagueId",
+					"protocol": "https",
+					"host": [
+						"{{apiId}}",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"leagues",
+						":leagueId"
+					],
+					"variable": [
+						{
+							"key": "leagueId",
+							"value": "{{leagueId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update League",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c06c59ee-8bb2-4252-b895-90e1747cf71d",
+						"exec": [
+							"pm.test(\"Response is 204\", function(){",
+							"   pm.expect(pm.response.code).to.be.equal(204) ",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"League Name Changed\"\n}"
+				},
+				"url": {
+					"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/leagues/:leagueId",
+					"protocol": "https",
+					"host": [
+						"{{apiId}}",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"leagues",
+						":leagueId"
+					],
+					"variable": [
+						{
+							"key": "leagueId",
+							"value": "{{leagueId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete League",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2d7b11d8-8462-4b1f-80c6-c188f2dd19ac",
+						"exec": [
+							"pm.test(\"Response is 204\", function(){",
+							"   pm.expect(pm.response.code).to.be.equal(204) ",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{authToken}}",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/leagues/:leagueId",
+					"protocol": "https",
+					"host": [
+						"{{apiId}}",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"leagues",
+						":leagueId"
+					],
+					"variable": [
+						{
+							"key": "leagueId",
+							"value": "{{leagueId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get League - Not Found",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5d508025-2a2a-4034-91c7-6d57d2e7cd32",
+						"exec": [
+							"pm.test(\"Response is 404\", function(){",
+							"   pm.expect(pm.response.code).to.be.equal(404) ",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{authToken}}"
+					}
+				],
+				"url": {
+					"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/leagues/:leagueId",
+					"protocol": "https",
+					"host": [
+						"{{apiId}}",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"leagues",
+						":leagueId"
+					],
+					"variable": [
+						{
+							"key": "leagueId",
+							"value": "{{leagueId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update League - Not Found",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f204f1a8-6061-4d30-9ad0-ed0a8eaba36b",
+						"exec": [
+							"pm.test(\"Response is 404\", function(){",
+							"   pm.expect(pm.response.code).to.be.equal(404) ",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"League Name Changed\"\n}"
+				},
+				"url": {
+					"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/leagues/:leagueId",
+					"protocol": "https",
+					"host": [
+						"{{apiId}}",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"leagues",
+						":leagueId"
+					],
+					"variable": [
+						{
+							"key": "leagueId",
+							"value": "{{leagueId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete League - Not Found",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "85899049-c7fb-4c6e-9a4e-7cac3b0b64e2",
+						"exec": [
+							"pm.test(\"Response is 404\", function(){",
+							"   pm.expect(pm.response.code).to.be.equal(404) ",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{authToken}}",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/leagues/:leagueId",
+					"protocol": "https",
+					"host": [
+						"{{apiId}}",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"leagues",
+						":leagueId"
+					],
+					"variable": [
+						{
+							"key": "leagueId",
+							"value": "{{leagueId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create League",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "00aa854a-d41b-4772-a208-75700a56b50e",
+						"exec": [
+							"pm.test(\"Response is 201\", function(){",
+							"   pm.expect(pm.response.code).to.be.equal(201) ",
+							"   pm.expect(pm.response.json()).to.be.an('object');",
+							"   pm.expect(pm.response.json()).to.have.a.property(\"item\");",
+							"   pm.expect(pm.response.json().item).to.have.a.property(\"leagueId\");",
+							"   pm.collectionVariables.set(\"leagueId\", pm.response.json().item.leagueId);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"League Name\"\n}"
+				},
+				"url": {
+					"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/leagues",
+					"protocol": "https",
+					"host": [
+						"{{apiId}}",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"leagues"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get League Registrations - No Items",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "044e6046-9a35-42fc-93f7-953c0bfe9336",
+						"exec": [
+							"pm.test(\"Response is 200 and no items\", function(){",
+							"   pm.expect(pm.response.code).to.be.equal(200) ",
+							"   pm.expect(pm.response.json()).to.be.an('object');",
+							"   pm.expect(pm.response.json()).to.have.a.property(\"items\");",
+							"   pm.expect(pm.response.json().items).to.be.empty;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/leagues/:leagueId/registrations",
+					"protocol": "https",
+					"host": [
+						"{{apiId}}",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"leagues",
+						":leagueId",
+						"registrations"
+					],
+					"variable": [
+						{
+							"key": "leagueId",
+							"value": "{{leagueId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create League Registration",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0eb9eca5-e8c1-4257-a2a4-2e47bdfc0ff1",
+						"exec": [
+							"pm.test(\"Response is 201\", function(){",
+							"   pm.expect(pm.response.code).to.be.equal(201) ",
+							"   pm.expect(pm.response.json()).to.be.an('object');",
+							"   pm.expect(pm.response.json()).to.have.a.property(\"item\");",
+							"   pm.expect(pm.response.json().item).to.have.a.property(\"registrationId\");",
+							"   pm.collectionVariables.set(\"registrationId\", pm.response.json().item.registrationId);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"userName\": \"Player 1\"\n}"
+				},
+				"url": {
+					"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/leagues/:leagueId/registrations",
+					"protocol": "https",
+					"host": [
+						"{{apiId}}",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"leagues",
+						":leagueId",
+						"registrations"
+					],
+					"variable": [
+						{
+							"key": "leagueId",
+							"value": "{{leagueId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get League Registrations - 1 Item",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3ba38b36-87f7-4217-b3f3-f7c265df2ab0",
+						"exec": [
+							"pm.test(\"Response is 200 and no items\", function(){",
+							"   pm.expect(pm.response.code).to.be.equal(200) ",
+							"   pm.expect(pm.response.json()).to.be.an('object');",
+							"   pm.expect(pm.response.json()).to.have.a.property(\"items\");",
+							"   pm.expect(pm.response.json().items).to.have.lengthOf(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/leagues/:leagueId/registrations",
+					"protocol": "https",
+					"host": [
+						"{{apiId}}",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"leagues",
+						":leagueId",
+						"registrations"
+					],
+					"variable": [
+						{
+							"key": "leagueId",
+							"value": "{{leagueId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Registration",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b296af56-efae-4ecc-9618-3ad1292216e3",
+						"exec": [
+							"pm.test(\"Response is 204\", function(){",
+							"   pm.expect(pm.response.code).to.be.equal(204) ",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/registrations/:registrationId",
+					"protocol": "https",
+					"host": [
+						"{{apiId}}",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"registrations",
+						":registrationId"
+					],
+					"variable": [
+						{
+							"key": "registrationId",
+							"value": "{{registrationId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get League Registrations - No Items",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dbaed192-b789-4bf8-a006-6017414540e2",
+						"exec": [
+							"pm.test(\"Response is 200 and no items\", function(){",
+							"   pm.expect(pm.response.code).to.be.equal(200) ",
+							"   pm.expect(pm.response.json()).to.be.an('object');",
+							"   pm.expect(pm.response.json()).to.have.a.property(\"items\");",
+							"   pm.expect(pm.response.json().items).to.be.empty;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/leagues/:leagueId/registrations",
+					"protocol": "https",
+					"host": [
+						"{{apiId}}",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"leagues",
+						":leagueId",
+						"registrations"
+					],
+					"variable": [
+						{
+							"key": "leagueId",
+							"value": "{{leagueId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete League",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "87189289-561f-487d-8420-004f61d74c0e",
+						"exec": [
+							"pm.test(\"Response is 204\", function(){",
+							"   pm.expect(pm.response.code).to.be.equal(204) ",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{authToken}}",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/leagues/:leagueId",
+					"protocol": "https",
+					"host": [
+						"{{apiId}}",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"leagues",
+						":leagueId"
+					],
+					"variable": [
+						{
+							"key": "leagueId",
+							"value": "{{leagueId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "7d5890a9-66ca-4548-a323-cdcd4b443caa",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "69555dcb-fb31-4d33-b838-84199c186683",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "f06b9eeb-5d86-4890-bda9-bd21bed304c1",
+			"key": "apiId",
+			"value": "u7wnm6rt3j"
+		},
+		{
+			"id": "647d2059-4c0a-43e3-83fe-39e97746f89b",
+			"key": "authToken",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2Rldi1vNDI2ajcwby51cy5hdXRoMC5jb20vIiwic3ViIjoiZ29vZ2xlLW9hdXRoMnwxMDM2NTE2NjU3NTQ0MTc4NjM2ODgiLCJhdWQiOiJZY2djbUpwUGdnOTBvVUNid0JucGJaR0FzUHlSdmZqbyIsImlhdCI6MTYwNTkyODM4NSwiZXhwIjoxNjA2MzYwMzg1LCJhdF9oYXNoIjoiay1OUzJhWDlGSlFsU0xiTmJNSThwQSIsIm5vbmNlIjoibHFPR25vSHRsYmFMRXdFOVlCQjZKQ3poa01-SGhKdGYifQ.rBlHWCA05eos-vh4iHjPa1fD2A61gkV75-KPVkFZzyU"
+		},
+		{
+			"id": "7829fae8-4bb1-4d29-8437-5d28d0268691",
+			"key": "leagueId",
+			"value": "3aebfae5-4af6-44e1-ba50-e792a8fa5f4d"
+		},
+		{
+			"id": "0549eafc-93aa-40bc-9d6b-1cd0b260b404",
+			"key": "registrationId",
+			"value": "06c1ddaf-9ba3-4484-ae46-98938a8333a8"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
