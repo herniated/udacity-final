@@ -16,11 +16,11 @@ The following paths have been implemented as the backend API:
 
 ## Postman API Collection
 
-A Postman Collection has been [included](https://github.com/herniated/udacity-final/blob/master/backend/udacity-sls-final-api.postman_collection.json) to doucment the backend API.  Please import it into Postman to expermiment with the API.
+A Postman Collection has been [included](https://github.com/herniated/udacity-final/blob/master/backend/udacity-sls-final-api.postman_collection.json) to doucument the backend API.  Please import it into Postman to experiment with the API.
 
 ## Authentication
 
-The read APIs do not require Authentication while the create, update, and delete API methods do require authentication.  In order to use Postman collection, please launch the client app (see instructions below) and use the browser developer tools to retrieve the id token from the console.  The token must be added as a collection variable in Postman named "authToken".
+The read APIs do not require Authentication while the create, update, and delete API methods do require authentication.  In order to use the Postman Collection, please launch the client app (see instructions below), login to the app, then use the browser developer tools to retrieve the id token from the console.  The token must be added as a Postman collection variable named "authToken".
 
 ## Metadata
 
@@ -30,27 +30,27 @@ The created date, and creating user of all registrations are tracked and made av
 
 ## Postman API Test Collection
 
-A Postman Test Collection has been [included](https://github.com/herniated/udacity-final/blob/master/backend/udacity-sls-final-api-tests.postman_collection.json) to test the backend API.  Please import it into Postman and execute via a Runner to test the API.
+A Postman Test Collection has been [included](https://github.com/herniated/udacity-final/blob/master/backend/udacity-sls-final-api-tests.postman_collection.json) to test the backend API.  Please import the collection into Postman and execute as a Runner to test the API.
 
 # Frontend Info
 
 ## Leagues List
 
-The main page is the Leagues List page.  It will display a list of all leagues in the system.  If authenticated, the user can create new leagues, edit existing leagues, or delete existign leagues.  If a user clicks on a league name, they will navigate to the Registrations List page.  If a user clicks the Pencil icon next to a league name, they will navigate to the LEague Editor.  If a user clicks the Delete (X) icon next to a league name, they will delete the league.
+The main page is the Leagues List page.  It will display a list of all leagues in the system.  If authenticated, the user can create new leagues, edit existing leagues, or delete existing leagues.  If a user clicks on a league name, they will navigate to the Registrations List page.  If a user clicks the Pencil icon next to a league name, they will navigate to the League Editor.  If a user clicks the Delete (X) icon next to a league name, they will delete the league.
 
 ## League Editor
 
-The League Editor alloows a user to change the name of a league.
+The League Editor allows a user to change the name of a league.
 
 ## Registrations List
 
-The Registrations List page will display a list of all registered users for a particular league.  If authenticated, the user can add new registered players to a league or delete registered players from a league.  If a user clicks the Delete (X) icon next to a player's name, they will delete the player from the league.
+The Registrations List page will display a list of all registered users for a particular league.  If authenticated, the user can add new registered players to a league or delete registered players from a league.  If a user clicks the Delete (X) icon next to a player's name, the player will be deleted from the league.
 
 # How to run the application
 
 ## Backend
 
-The backend has already been deployed.  The frontend has already been configured to work with the deployed backend.
+The backend has already been deployed.  The frontend application has already been configured to work with the deployed backend.
 
 ## Frontend
 
