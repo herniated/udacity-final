@@ -16,7 +16,7 @@ The following paths have been implemented as the backend API:
 
 ## Postman API Collection
 
-A Postman Collection has been [included](https://github.com/herniated/udacity-final/blob/master/backend/udacity-sls-final-api.postman_collection.json) to doucument the backend API.  Please import it into Postman to experiment with the API.
+A Postman Collection has been [included](https://github.com/herniated/udacity-final/blob/master/backend/udacity-sls-final-api.postman_collection.json) to document the backend API.  Please import it into Postman to experiment with the API.
 
 ## Authentication
 
