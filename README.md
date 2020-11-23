@@ -1,6 +1,6 @@
 # udacity-final
 
-This application will allow creation of a sports league and the addition of players to the league.  A League has one name property and can have many players registered in the league.  This repo includes both a backend API and a frontend client.  The backend is an AWS serverless application using AWS Cloud Formation, API Gateway, Dynamo DB (2 tables), Lambda functions, function-level permissions, logging, distributed tracing, request validation.  The code is split into multiple layers, separating business logic from I/O related code.  In addition, Auth0 is used Authentication.  
+This application provides the ability to create sports leagues and add players to the leagues.  A League can have one name property and have many players registered for the league.  This repository includes both a backend API and a frontend client.  The backend API is an AWS serverless application using AWS Cloud Formation, API Gateway, Dynamo DB (2 tables), Lambda functions, function-level permissions, logging, distributed tracing, request validation.  The code is split into multiple layers, separating business logic from I/O related code.  In addition, Auth0 is used Authentication.  
 
 # Backend Info
 
