@@ -430,17 +430,17 @@
 		{
 			"id": "5ac080a0-8a43-4bf3-a1ce-acae1d41347e",
 			"key": "authToken",
-			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2Rldi1vNDI2ajcwby51cy5hdXRoMC5jb20vIiwic3ViIjoiZ29vZ2xlLW9hdXRoMnwxMDM2NTE2NjU3NTQ0MTc4NjM2ODgiLCJhdWQiOiJZY2djbUpwUGdnOTBvVUNid0JucGJaR0FzUHlSdmZqbyIsImlhdCI6MTYwNTkyODM4NSwiZXhwIjoxNjA2MzYwMzg1LCJhdF9oYXNoIjoiay1OUzJhWDlGSlFsU0xiTmJNSThwQSIsIm5vbmNlIjoibHFPR25vSHRsYmFMRXdFOVlCQjZKQ3poa01-SGhKdGYifQ.rBlHWCA05eos-vh4iHjPa1fD2A61gkV75-KPVkFZzyU"
+			"value": "authToken"
 		},
 		{
 			"id": "76002fb0-5e85-49b7-b62f-5ddedc3df666",
 			"key": "leagueId",
-			"value": "d073a198-9e48-41ad-bf11-460a4300a4f6"
+			"value": "leagueId"
 		},
 		{
 			"id": "074ebe29-29f8-4366-898b-00259f33cf84",
 			"key": "registrationId",
-			"value": "1fd7f17e-b3d0-402b-b744-420038d4eacb"
+			"value": "registrationId"
 		}
 	],
 	"protocolProfileBehavior": {}
