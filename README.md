@@ -8,9 +8,11 @@ This application provides the ability to create sports leagues and add players t
 
 The following paths have been implemented as the backend API:
 
-1) '/leagues'
-2) '/leagues/{{leagueId}}/registrations`
-3) '/registrations'
+```
+/leagues
+/leagues/{{leagueId}}/registrations
+/registrations
+```
 
 ## Postman API Collection
 
