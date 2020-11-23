@@ -20,7 +20,7 @@ A Postman Collection has been [included](https://github.com/herniated/udacity-fi
 
 ## Authentication
 
-The read APIs do not require Authentication while the create, update, and delete API methods do require authentication.  In order to use the Postman Collection, please launch the client app (see instructions below), login to the app, then use the browser developer tools to retrieve the id token from the console.  The token must be added as a Postman collection variable named "authToken".
+The read APIs do not require Authentication while the create, update, and delete API methods do require authentication.  In order to use the Postman Collection, please launch the client application (see instructions below), login to the application, then use the browser developer tools to retrieve the id token from the console.  The token must be added as a Postman collection variable named "authToken".
 
 ## Metadata
 
